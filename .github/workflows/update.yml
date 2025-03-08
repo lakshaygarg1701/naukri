@@ -20,7 +20,9 @@ jobs:
 
       - name: Install dependencies
         run: |
-          sudo pip install -r requirements.txt
+          pwd
+          date
+          find / -name "requirements.txt" 2>/dev/null -exec pip install -r {} \;
 
       - name: Set up Chrome WebDriver
         run: |
