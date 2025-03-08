@@ -20,15 +20,21 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pwd
-          date
-          find / -name "requirements.txt" 2>/dev/null -exec pip install -r {} \;
+            apt update
+            apt upgrade
+            wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+            apt-get install -y ./google-chrome-stable_current_amd64.deb
+            google-chrome --version
+            pip3 install selenium
+            pip3 install webdriver-manager
+            # find / -name "requirements.txt" 2>/dev/null -exec ls -ltrh {} \;
+            # find / -name "requirements.txt" 2>/dev/null -exec pip install -r {} \;
 
-      - name: Set up Chrome WebDriver
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y chromium-browser
-          echo "CHROMIUM_PATH=/usr/bin/chromium-browser" >> $GITHUB_ENV
+    #   - name: Set up Chrome WebDriver
+    #     run: |
+    #       sudo apt-get update
+    #       sudo apt-get install -y chromium-browser
+    #       echo "CHROMIUM_PATH=/usr/bin/chromium-browser" >> $GITHUB_ENV
 
       - name: Run the resume update script
         env:
