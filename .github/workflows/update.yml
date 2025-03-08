@@ -40,4 +40,4 @@ jobs:
           NAUKRI_EMAIL: ${{ secrets.NAUKRI_EMAIL }}
           NAUKRI_PASSWORD: ${{ secrets.NAUKRI_PASSWORD }}
           RESUME_PATH: ${{ secrets.RESUME_PATH }}
-        run: python update_naukri.py
+        run: python update.py
