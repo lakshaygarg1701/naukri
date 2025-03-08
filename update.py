@@ -27,12 +27,12 @@ def update_resume():
         time.sleep(3)
 
         # Click on login
-        driver.find_element(By.LINK_TEXT, "Login").click()
+        driver.find_element(By.ID, "login_Layer").click()
         time.sleep(3)
 
         # Enter email and password
-        driver.find_element(By.NAME, "username").send_keys(EMAIL)
-        driver.find_element(By.NAME, "password").send_keys(PASSWORD, Keys.RETURN)
+        driver.find_element(By.type, "text").send_keys(EMAIL)
+        driver.find_element(By.type, "password").send_keys(PASSWORD, Keys.RETURN)
         time.sleep(5)
 
         # Navigate to profile
