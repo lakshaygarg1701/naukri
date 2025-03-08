@@ -8,7 +8,7 @@ on:
 jobs:
   update-resume:
     runs-on: ubuntu-latest
-
+    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -24,15 +24,13 @@ jobs:
 
       - name: Set up Chrome WebDriver
         run: |
-          choco install googlechrome --ignore-checksums -y
-          choco install chromedriver --ignore-checksums -y
-          echo "CHROMIUM_PATH=C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe" >> $env:GITHUB_ENV
-          echo "CHROME_OPTIONS=--headless --disable-gpu --no-sandbox" >> $env:GITHUB_ENV
+          sudo apt-get update
+          sudo apt-get install -y chromium-browser
+          echo "CHROMIUM_PATH=/usr/bin/chromium-browser" >> $GITHUB_ENV
 
       - name: Run the resume update script
         env:
           NAUKRI_EMAIL: ${{ secrets.NAUKRI_EMAIL }}
           NAUKRI_PASSWORD: ${{ secrets.NAUKRI_PASSWORD }}
           RESUME_PATH: ${{ secrets.RESUME_PATH }}
-          CHROME_OPTIONS: ${{ env.CHROME_OPTIONS }}
-        run: python update_naukri.py
+        run: python update.py
