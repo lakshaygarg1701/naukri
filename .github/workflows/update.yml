@@ -17,14 +17,19 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'
-
+          
       - name: Install dependencies
+        env:
+            NAUKRI_EMAIL: ${{ secrets.NAUKRI_EMAIL }}
+            NAUKRI_PASSWORD: ${{ secrets.NAUKRI_PASSWORD }}
+            RESUME_PATH: ${{ secrets.RESUME_PATH }}
         run: |
             wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
             sudo apt-get install -y ./google-chrome-stable_current_amd64.deb
             google-chrome --version
             pip3 install selenium
             pip3 install webdriver-manager
+            find / -name "update.py" 2>/dev/null -exec ls -ltrh {} \;
             # find / -name "requirements.txt" 2>/dev/null -exec ls -ltrh {} \;
             # find / -name "requirements.txt" 2>/dev/null -exec pip install -r {} \;
 
@@ -35,8 +40,4 @@ jobs:
     #       echo "CHROMIUM_PATH=/usr/bin/chromium-browser" >> $GITHUB_ENV
 
       - name: Run the resume update script
-        env:
-          NAUKRI_EMAIL: ${{ secrets.NAUKRI_EMAIL }}
-          NAUKRI_PASSWORD: ${{ secrets.NAUKRI_PASSWORD }}
-          RESUME_PATH: ${{ secrets.RESUME_PATH }}
         run: python update.py
