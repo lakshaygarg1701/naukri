@@ -27,7 +27,7 @@ def update_resume():
         time.sleep(3)
 
         # Click on login
-        driver.find_element(By.ID, "login_Layer").click()
+        driver.find_element(By.XPATH, "//a[contains(text(),'Login')]").click()
         time.sleep(3)
 
         # Enter email and password
