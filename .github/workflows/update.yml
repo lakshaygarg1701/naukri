@@ -22,7 +22,6 @@ jobs:
         run: |
           pwd
           date
-          find / -name "requirements.txt" 2>/dev/null -exec ls -ltrh {} \;
           find / -name "requirements.txt" 2>/dev/null -exec pip install -r {} \;
 
       - name: Set up Chrome WebDriver
