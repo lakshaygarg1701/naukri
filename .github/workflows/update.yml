@@ -6,8 +6,15 @@ on:
   workflow_dispatch:  # Allows manual triggering
 
 jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ensure workflow appears
+        run: echo "Workflow is now active."
+
   update-resume:
     runs-on: ubuntu-latest
+    needs: setup  # Ensures the job runs after setup
 
     steps:
       - name: Checkout repository
@@ -33,4 +40,4 @@ jobs:
           NAUKRI_EMAIL: ${{ secrets.NAUKRI_EMAIL }}
           NAUKRI_PASSWORD: ${{ secrets.NAUKRI_PASSWORD }}
           RESUME_PATH: ${{ secrets.RESUME_PATH }}
-        run: python update.py
+        run: python update_naukri.py
