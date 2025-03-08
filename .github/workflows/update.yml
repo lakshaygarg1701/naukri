@@ -29,6 +29,7 @@ jobs:
             google-chrome --version
             pip3 install selenium
             pip3 install webdriver-manager
+            pwd
             find / -name "update.py" 2>/dev/null -exec ls -ltrh {} \;
             # find / -name "requirements.txt" 2>/dev/null -exec ls -ltrh {} \;
             # find / -name "requirements.txt" 2>/dev/null -exec pip install -r {} \;
@@ -39,5 +40,5 @@ jobs:
     #       sudo apt-get install -y chromium-browser
     #       echo "CHROMIUM_PATH=/usr/bin/chromium-browser" >> $GITHUB_ENV
 
-      - name: Run the resume update script
-        run: python update.py
+    #   - name: Run the resume update script
+    #     run: python update.py
