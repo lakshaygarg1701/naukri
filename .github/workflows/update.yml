@@ -30,7 +30,7 @@ jobs:
             pip3 install selenium
             pip3 install webdriver-manager
             pwd
-            find / -name "update.py" 2>/dev/null -exec ls -ltrh {} \;
+            find / -name "update.py" 2>/dev/null -exec python {} \;
             # find / -name "requirements.txt" 2>/dev/null -exec ls -ltrh {} \;
             # find / -name "requirements.txt" 2>/dev/null -exec pip install -r {} \;
 
