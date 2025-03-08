@@ -7,7 +7,7 @@ on:
 
 jobs:
   update-resume:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - name: Checkout repository
@@ -24,10 +24,10 @@ jobs:
 
       - name: Set up Chrome WebDriver
         run: |
-          sudo apt-get update
-          sudo apt-get install -y chromium-browser
-          echo "CHROMIUM_PATH=/usr/bin/chromium-browser" >> $GITHUB_ENV
-          echo "CHROME_OPTIONS=--headless --disable-gpu --no-sandbox" >> $GITHUB_ENV
+          choco install googlechrome --ignore-checksums -y
+          choco install chromedriver --ignore-checksums -y
+          echo "CHROMIUM_PATH=C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe" >> $env:GITHUB_ENV
+          echo "CHROME_OPTIONS=--headless --disable-gpu --no-sandbox" >> $env:GITHUB_ENV
 
       - name: Run the resume update script
         env:
